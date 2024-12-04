@@ -5,26 +5,38 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 let wids = 0
-
+let posx = [500,300,700,1200,900,400,0,-200,-300,-600,-700]
+let posy = [600,500,400,600,200,150,1000,600,300,700,800]
+let xpos = 10;
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  // for(let i = 0; i < 20; i++){
-  //   Cloud(wids,random(0,height),random(0.5,2.0))
-  // }
+
 }
 
 function draw() {
-  wids += 25;
-
+  wids += 5;
   background(238, 207, 109);
-//  Cloud(wids,height/2,1.5)
-  frameRate(60)
-  for(let i = 0; i < 123; i++){
-  Cloud(wids,height,random(.05,2,0))
-  if(wids >= width+5000){
-    wids = 0
-    } 
+  cloud_hopper(xpos,100);
+  xpos =+ 5;
+  for(let i = 0; i < posx.length; i++){
+    Cloud(wids+posx[i],posy[i],1);
+    Cloud(wids+posx[i]-1000,posy[i],1);
+    Cloud(wids+posx[i]-2000,posy[i],1);
+    Cloud(wids+posx[i]-3000,posy[i],1);
+    Cloud(wids+posx[i]-4000,posy[i],1);
+    Cloud(wids+posx[i]-5000,posy[i],1);
+    Cloud(wids+posx[i]-6000,posy[i],1);
   }
+
+  if(wids > width+6800){
+    wids = -1300;
+  }
+  
+  
+
+
+  frameRate(60);
+  
 }
 
 function Cloud(xs,ys,ws){
@@ -40,9 +52,12 @@ function Cloud(xs,ys,ws){
   circle(xs+20, ys+4, 53)
   circle(xs-5, ys-12, 53)
   circle(xs-23, ys+3, 53)
-  ellipse(xs+200,ys+200,200)
-  ellipse(xs+150,ys+200,200)
-  ellipse(xs+200,ys+150,200)
 
+}
+
+function cloud_hopper(xss,ypos){
+  fill(0,0,0);
+  circle(xss, ypos, 33);
+  
 }
 
